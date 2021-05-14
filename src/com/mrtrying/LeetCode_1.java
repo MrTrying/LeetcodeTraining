@@ -9,7 +9,7 @@ public class LeetCode_1 {
         Solution demo = new Solution();
 //        int[] arr = demo.twoSum(new int[]{2,7,11,15},9);
 //        int[] arr = demo.twoSum(new int[]{3,2,4},6);
-        int[] arr = demo.twoSum(new int[]{3,3},6);
+        int[] arr = demo.twoSum(new int[]{0,3,4,0},0);
         ArrayList list = new ArrayList();
         for (int i:arr) {
             list.add(i);
@@ -44,13 +44,7 @@ public class LeetCode_1 {
          */
         public int[] twoSum(int[] nums, int target) {
             for (int i = 0; i < nums.length; i++) {
-                if(nums[i] >= target){
-                    continue;
-                }
                 for (int j = i + 1; j < nums.length; j++) {
-                    if(nums[j] >= target){
-                        continue;
-                    }
                     if(nums[i] + nums[j] == target){
                         return new int[]{i,j};
                     }
