@@ -1,4 +1,4 @@
-package com.mrtrying;
+package com.mrtrying.questionbank;
 
 public class LeetCode_421 {
     public static void main(String[] args) {

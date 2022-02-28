@@ -1,4 +1,4 @@
-package com.mrtrying;
+package com.mrtrying.questionbank;
 
 import java.util.ArrayList;
 import java.util.List;
