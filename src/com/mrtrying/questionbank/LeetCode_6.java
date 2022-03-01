@@ -5,8 +5,8 @@ import java.util.List;
 
 public class LeetCode_6 {
     public static void main(String[] args) {
-        String s = "ABCD";
-        int numRows = 2;
+        String s = "PAYPALISHIRING";
+        int numRows = 4;
         Solution solution = new Solution();
         String result = solution.convert(s, numRows);
         System.out.println(result);
@@ -40,28 +40,29 @@ public class LeetCode_6 {
 
     static class Solution {
         public String convert(String s, int numRows) {
-            if(s.length() <= numRows || numRows == 1){
+            if (s.length() <= numRows || numRows == 1) {
                 return s;
             }
-            int[] pos = new int[numRows * 2 - 2];
-            for (int i = 0; i < pos.length; i++) {
-                pos[i] = i < numRows ? i : (numRows - 1) * 2 - i;
-            }
-            List<List<String>> list = new ArrayList<>();
-            for (int i = 0; i < numRows; i++) {
-                list.add(new ArrayList<>());
+
+            int r = numRows * 2 - 2;
+            int cl = (s.length() + r - 1) / r * (numRows - 1);
+            char[][] chars = new char[numRows][cl];
+            for (int i = 0, x = 0, y = 0; i < s.length(); i++) {
+                chars[x][y] = s.charAt(i);
+                if (i % r < numRows - 1) {
+                    x++;
+                } else {
+                    x--;
+                    y++;
+                }
             }
 
-            for (int i = 0; i < s.length(); i++) {
-                char ch = s.charAt(i);
-                List<String> target = list.get(pos[i % pos.length]);
-                target.add(String.valueOf(ch));
-            }
             StringBuffer sb = new StringBuffer();
-            for (int i = 0; i < list.size(); i++) {
-                List<String> target = list.get(i);
-                for (int j = 0; j < target.size(); j++) {
-                    sb.append(target.get(j));
+            for (char[] ch : chars) {
+                for (char c : ch) {
+                    if (c != 0) {
+                        sb.append(c);
+                    }
                 }
             }
             return sb.toString();
