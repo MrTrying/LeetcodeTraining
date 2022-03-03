@@ -26,13 +26,9 @@ public class LeetCode_258 {
 
     static class Solution {
         public int addDigits(int num) {
-            int sum = 0;
-            while (num >= 10) {
-                sum += num % 10;
-                num /= 10;
-            }
-            sum += num;
-            return sum > 9 ? addDigits(sum) : sum;
+            if(num == 0) return 0;
+            num %= 9;
+            return num == 0 ? 9 : num;
         }
     }
 }
